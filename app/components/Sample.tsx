@@ -3,7 +3,7 @@ const Sample = () => {
     <div>
       <p className="text-blue-500">Test</p>
     </div>
-  );
-};
+  )
+}
 
-export default Sample;
+export default Sample
