@@ -1,13 +1,9 @@
-import styled from "styled-components";
-
 const Sample = () => {
-  return <Block>BLUE</Block>;
+  return (
+    <div>
+      <p className="text-blue-500">Test</p>
+    </div>
+  );
 };
 
 export default Sample;
-
-const Block = styled.div`
-  background: blue;
-  width: 100px;
-  height: 100px;
-`;
