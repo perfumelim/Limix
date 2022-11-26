@@ -9,7 +9,8 @@
     "dev:css": "npm run generate:css -- --watch",
     "dev:remix": "remix dev",
     "generate:css": "npx tailwindcss -o ./app/tailwind.css",
-    "start": "remix-serve build"
+    "start": "remix-serve build",
+    "transform:svg": "yarn svgr --typescript --out-dir app/components/vectors app/assets/vectors"
   },
   "dependencies": {
     "@remix-run/node": "^1.7.6",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "@remix-run/dev": "^1.7.6",
     "@remix-run/eslint-config": "^1.7.6",
+    "@svgr/cli": "^6.5.1",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "eslint": "^8.27.0",

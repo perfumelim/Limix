@@ -525,8 +525,8 @@ video {
   width: 5rem;
 }
 
-.w-28 {
-  width: 7rem;
+.w-24 {
+  width: 6rem;
 }
 
 .items-center {
@@ -541,11 +541,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-customGrey-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(61 61 63 / var(--tw-border-opacity));
-}
-
 .border-customGrey-200 {
   --tw-border-opacity: 1;
   border-color: rgb(218 222 212 / var(--tw-border-opacity));
@@ -554,9 +549,4 @@ video {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
-}
-
-.text-customGreen-400 {
-  --tw-text-opacity: 1;
-  color: rgb(77 119 78 / var(--tw-text-opacity));
 }
