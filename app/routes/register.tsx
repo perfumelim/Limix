@@ -6,7 +6,7 @@ import { useGoBack } from '~/hooks/useGoBack'
 const Resister = () => {
   const goBack = useGoBack()
   return (
-    <div className="h-screen">
+    <div className="h-full">
       <Header title="회원가입" headerBack={<HeaderBackButton onClick={goBack} />} />
       <AuthForm mode="register" />
     </div>
