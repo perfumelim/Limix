@@ -537,6 +537,10 @@ video {
   margin-left: -0.5rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -553,6 +557,14 @@ video {
   height: auto;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -565,12 +577,36 @@ video {
   width: 1.75rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-col-reverse {
+  flex-direction: column-reverse;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-center {
   justify-content: center;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-b {
@@ -582,16 +618,25 @@ video {
   border-color: rgb(218 222 212 / var(--tw-border-opacity));
 }
 
-.fill-customGrey-300 {
-  fill: #79827b;
+.bg-limegreen {
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 206 148 / var(--tw-bg-opacity));
 }
 
-.stroke-customGrey-300 {
-  stroke: #79827b;
+.fill-zinc-400 {
+  fill: #a1a1aa;
+}
+
+.stroke-zinc-400 {
+  stroke: #a1a1aa;
 }
 
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
 }
 
 .px-4 {
@@ -604,16 +649,53 @@ video {
   line-height: 1.75rem;
 }
 
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
 
+.font-semibold {
+  font-weight: 600;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
 .text-customGrey-400 {
+  --tw-text-opacity: 1;
+  color: rgb(61 61 63 / var(--tw-text-opacity));
+}
+
+.text-customGrey-300 {
   --tw-text-opacity: 1;
   color: rgb(60 64 61 / var(--tw-text-opacity));
 }
 
-.text-customGrey-500 {
+.text-zinc-500 {
   --tw-text-opacity: 1;
-  color: rgb(61 61 63 / var(--tw-text-opacity));
+  color: rgb(113 113 122 / var(--tw-text-opacity));
+}
+
+.outline-0 {
+  outline-width: 0px;
+}
+
+.focus\:border-limegreen:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(125 206 148 / var(--tw-border-opacity));
+}
+
+.focus\:text-limegreen:focus {
+  --tw-text-opacity: 1;
+  color: rgb(125 206 148 / var(--tw-text-opacity));
+}
+
+.peer:focus ~ .peer-focus\:text-limegreen {
+  --tw-text-opacity: 1;
+  color: rgb(125 206 148 / var(--tw-text-opacity));
 }

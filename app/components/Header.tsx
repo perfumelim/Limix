@@ -13,7 +13,7 @@ const Header = ({ title = <Logo />, headerBack, headerRight }: Props) => {
       {headerBack && (
         <div className="absolute w-8 h-full top-0 left-4 flex items-center">{headerBack}</div>
       )}
-      <div className="text-lg font-bold text-customGrey-500 w-24">{title}</div>
+      <div className="text-lg font-bold text-customGrey-400 w-24">{title}</div>
       {headerRight && <div className="absolute h-full top-0 right-4 flex items-center">right</div>}
     </header>
   )
