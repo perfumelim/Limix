@@ -4,7 +4,7 @@ interface Props extends InputProps {
   label: string
 }
 
-const LabelInbult = ({ label, ...rest }: Props) => {
+const LabelInput = ({ label, ...rest }: Props) => {
   return (
     <div className="flex flex-col-reverse">
       <Input {...rest} />
@@ -15,4 +15,4 @@ const LabelInbult = ({ label, ...rest }: Props) => {
   )
 }
 
-export default LabelInbult
+export default LabelInput

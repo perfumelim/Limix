@@ -1,6 +1,12 @@
+import { Form, useActionData } from '@remix-run/react'
 import Button from './Button'
-import LabelInbult from './LabelInput'
+import LabelInput from './LabelInput'
 import QuestionLink from './QuestionLink'
+import { useFormLoading } from './useFormLoading'
+
+interface ActionData {
+  text: 'hello world'
+}
 
 interface Props {
   mode: 'login' | 'register'
@@ -26,20 +32,36 @@ const authDescriptions = {
 } as const
 
 const AuthForm = ({ mode }: Props) => {
+  const action = useActionData<ActionData | undefined>()
+  const isLoading = useFormLoading()
+
+  // console.log(transition)
+
   const { usernamePlaceholder, passwordPlaceholder, buttonText, actionLink, actionText, question } =
     authDescriptions[mode]
   return (
-    <div className="h-full p-4 flex flex-col justify-between">
+    <Form method="post" className="h-full p-4 flex flex-col justify-between">
       <div className="flex flex-col gap-4 w-full">
-        <LabelInbult label="아이디" placeholder={usernamePlaceholder} />
-        <LabelInbult label="비밀번호" placeholder={passwordPlaceholder} />
+        <LabelInput
+          label="아이디"
+          name="username"
+          placeholder={usernamePlaceholder}
+          disabled={isLoading}
+        />
+        <LabelInput
+          label="비밀번호"
+          name="password"
+          placeholder={passwordPlaceholder}
+          disabled={isLoading}
+        />
       </div>
       <div className="flex flex-col items-center gap-y-6">
-        <Button layoutMode="fullWidth">{buttonText}</Button>
-
+        <Button type="submit" layoutMode="fullWidth" disabled={isLoading}>
+          {buttonText}
+        </Button>
         <QuestionLink question={question} name={actionText} to={actionLink} />
       </div>
-    </div>
+    </Form>
   )
 }
 

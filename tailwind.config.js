@@ -24,6 +24,14 @@ module.exports = {
         400: '#3d3d3f',
       },
     },
+    extend: {
+      grayscale: {
+        60: '60%',
+      },
+      transitionProperty: {
+        filter: 'filter',
+      },
+    },
   },
   plugins: [],
 }
