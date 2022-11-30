@@ -1,18 +1,21 @@
 {
   "name": "limix-server",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "type": "module",
   "devDependencies": {
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.3"
+    "nodemon": "^2.0.18",
+    "pino-pretty": "^8.1.0",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "fastify": "^4.10.2"
+    "@fastify/swagger": "^7.4.1",
+    "fastify": "^4.2.0"
   },
   "scripts": {
-    "start": "ts-node-esm --transpileOnly ./src/main.ts",
+    "start": "ts-node-esm --transpileOnly ./src/main.ts | pino-pretty",
     "start:dev": "nodemon --watch ./src --exec \"yarn start\" -e ts"
   }
 }
