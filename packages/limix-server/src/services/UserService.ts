@@ -1,3 +1,13 @@
+import db from '../lib/db.js'
+import bcrypt from 'bcrypt'
+
+const SALT_ROUNDS = 10
+
+interface AuthParams {
+  username: string
+  password: string
+}
+
 class UserService {
   private static instance: UserService
   public static getInstance() {
@@ -7,8 +17,15 @@ class UserService {
     return UserService.instance
   }
 
-  register() {
-    return 'registered!'
+  async register({ username, password }: AuthParams) {
+    const hash = await bcrypt.hash(password, SALT_ROUNDS)
+    const user = await db.user.create({
+      data: {
+        username,
+        passwordHash: hash,
+      },
+    })
+    return user
   }
 
   login() {

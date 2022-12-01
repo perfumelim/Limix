@@ -1,7 +1,6 @@
 import { SwaggerOptions } from '@fastify/swagger'
 
 export const swaggerConfig: SwaggerOptions = {
-  routePrefix: '/documentation',
   swagger: {
     info: {
       title: 'Test swagger',
@@ -17,23 +16,27 @@ export const swaggerConfig: SwaggerOptions = {
     consumes: ['application/json'],
     produces: ['application/json'],
     tags: [
-      // { name: 'user', description: 'User related end-points' },
-      // { name: 'code', description: 'Code related end-points' },
+      { name: 'user', description: 'User related end-points' },
+      { name: 'code', description: 'Code related end-points' },
     ],
-  },
-  uiConfig: {
-    docExpansion: 'full',
-    deepLinking: false,
-  },
-  uiHooks: {
-    onRequest: function (request, reply, next) {
-      next()
+    definitions: {
+      User: {
+        type: 'object',
+        required: ['id', 'email'],
+        properties: {
+          id: { type: 'string', format: 'uuid' },
+          firstName: { type: 'string' },
+          lastName: { type: 'string' },
+          email: { type: 'string', format: 'email' },
+        },
+      },
     },
-    preHandler: function (request, reply, next) {
-      next()
+    securityDefinitions: {
+      apiKey: {
+        type: 'apiKey',
+        name: 'apiKey',
+        in: 'header',
+      },
     },
   },
-  staticCSP: true,
-  transformStaticCSP: (header) => header,
-  exposeRoute: true,
 }

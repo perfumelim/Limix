@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "sourceMap": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": ["ES2022"],
+    "lib": ["ESNext"],
     "rootDir": "./src",
     "moduleResolution": "node",
     "outDir": "./dist",
