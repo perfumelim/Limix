@@ -8,15 +8,6 @@ const server = Fastify({
   logger: true,
 })
 
-db.user
-  .create({
-    data: {
-      username: 'perfume',
-      passwordHash: '234567',
-    },
-  })
-  .then(console.log)
-
 await server.register(fastifySwagger, swaggerConfig)
 server.register(routes)
 

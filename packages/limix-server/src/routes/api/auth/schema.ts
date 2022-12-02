@@ -1,6 +1,6 @@
 import { FastifySchema } from 'fastify'
 
-export const authResultSchema = {
+const authResultSchema = {
   type: 'object',
   properties: {
     tokens: {
