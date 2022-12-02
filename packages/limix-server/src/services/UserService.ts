@@ -26,7 +26,7 @@ class UserService {
     })
 
     if (exists) {
-      throw new AppError('User already exists', 409)
+      throw new AppError('UserExistsError')
     }
 
     const hash = await bcrypt.hash(password, SALT_ROUNDS)
