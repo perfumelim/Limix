@@ -27,3 +27,12 @@ export default class AppError extends Error {
     this.statusCode = info.statusCode
   }
 }
+
+export const appErrorSchema = {
+  type: 'object',
+  properties: {
+    name: { type: 'string' },
+    message: { type: 'string' },
+    statusCode: { type: 'number' },
+  },
+}

@@ -14,11 +14,11 @@ await server.register(fastifySwagger, swaggerConfig)
 server.setErrorHandler(async (error, request, reply) => {
   reply.statusCode = error.statusCode ?? 500
   if (error instanceof AppError) {
-    reply.send({
+    return {
       name: error.name,
       message: error.message,
       statusCode: error.statusCode,
-    })
+    }
   }
   return error
 })
