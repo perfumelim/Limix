@@ -4,6 +4,7 @@ import fastifySwagger from '@fastify/swagger'
 import { swaggerConfig } from './config/swagger.js'
 import db from './lib/db.js'
 import AppError from './lib/AppError.js'
+import 'dotenv/config'
 
 const server = Fastify({
   logger: true,

@@ -1,5 +1,5 @@
 import { FastifySchema } from 'fastify'
-import { appErrorSchema } from '../../../lib/AppError'
+import { appErrorSchema } from '../../../lib/AppError.js'
 
 const authResultSchema = {
   type: 'object',
