@@ -1,7 +1,8 @@
 import db from '../lib/db.js'
 import bcrypt from 'bcrypt'
-import AppError from '../lib/AppError.js'
+import AppError, { isAppError } from '../lib/AppError.js'
 import { generateToken } from '../lib/tokens.js'
+import { User } from '@prisma/client'
 
 const SALT_ROUNDS = 10
 
@@ -19,7 +20,8 @@ class UserService {
     return UserService.instance
   }
 
-  async generateTokens(userId: number, username: string) {
+  async generateTokens(user: User) {
+    const { id: userId, username } = user
     const [accessToken, refreshToken] = await Promise.all([
       generateToken({
         type: 'access_token',
@@ -58,14 +60,36 @@ class UserService {
         passwordHash: hash,
       },
     })
-    const tokens = await this.generateTokens(user.id, username)
+    const tokens = await this.generateTokens(user)
     return {
       tokens,
       user,
     }
   }
 
-  login() {
+  async login({ username, password }: AuthParams) {
+    const user = await db.user.findUnique({
+      where: {
+        username,
+      },
+    })
+
+    if (!user) {
+      throw new AppError('AuthenticationError')
+    }
+
+    try {
+      const result = await bcrypt.compare(password, user.passwordHash)
+      if (!result) {
+        throw new AppError('UnknownError')
+      }
+    } catch (e) {
+      if (isAppError(e)) {
+        throw e
+      }
+      throw new AppError('UnknownError')
+    }
+
     return 'logged in!'
   }
 }
