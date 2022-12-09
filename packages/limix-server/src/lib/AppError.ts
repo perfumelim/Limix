@@ -1,4 +1,9 @@
-type ErrorName = 'UserExistsError' | 'AuthenticationError' | 'UnknownError' | 'UnauthorizedError'
+type ErrorName =
+  | 'UserExistsError'
+  | 'AuthenticationError'
+  | 'UnknownError'
+  | 'UnauthorizedError'
+  | 'TokenExpiredError'
 type ErrorInfo = {
   statusCode: number
   message: string
@@ -18,6 +23,10 @@ const statusCodeMap: Record<ErrorName, ErrorInfo> = {
   },
   UnauthorizedError: {
     message: 'Unauthorized error',
+    statusCode: 401,
+  },
+  TokenExpiredError: {
+    message: 'Token is expired',
     statusCode: 401,
   },
 }
