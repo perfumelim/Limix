@@ -1,13 +1,18 @@
-type ErrorName =
-  | 'UserExistsError'
-  | 'AuthenticationError'
-  | 'UnknownError'
-  | 'UnauthorizedError'
-  | 'TokenExpiredError'
+type ErrorName = 'UserExistsError' | 'AuthenticationError' | 'UnknownError' | 'UnauthorizedError'
 type ErrorInfo = {
   statusCode: number
   message: string
 }
+
+interface ErrorPayload {
+  UserExistsError: undefined
+  AuthenticationError: undefined
+  UnknownError: undefined
+  UnauthorizedError: {
+    isExpiredToken: boolean
+  }
+}
+
 const statusCodeMap: Record<ErrorName, ErrorInfo> = {
   UserExistsError: {
     message: 'User already exists',
@@ -25,16 +30,12 @@ const statusCodeMap: Record<ErrorName, ErrorInfo> = {
     message: 'Unauthorized error',
     statusCode: 401,
   },
-  TokenExpiredError: {
-    message: 'Token is expired',
-    statusCode: 401,
-  },
 }
 
 export default class AppError extends Error {
   public statusCode: number
 
-  constructor(public name: ErrorName) {
+  constructor(public name: ErrorName, public payload: ErrorPayload[ErrorName]) {
     const info = statusCodeMap[name]
     super(info.message)
     this.statusCode = info.statusCode
@@ -54,9 +55,13 @@ export const appErrorSchema = {
   },
 }
 
-export function createAppErrorSchema<T>(example: T) {
+export function createAppErrorSchema<T, S>(example: T, payloadSchema?: S) {
   return {
-    ...appErrorSchema,
+    type: 'object',
+    properties: {
+      ...appErrorSchema.properties,
+      ...(payloadSchema ? { payload: payloadSchema } : {}),
+    },
     example,
   }
 }
